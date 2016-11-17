@@ -19,7 +19,7 @@ class PrintBugViewController: UIViewController {
     let moveDuration = 3.0
     let disperseDuration = 1.0    
     var bugs = [UIImageView]()
-
+    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
@@ -31,11 +31,14 @@ class PrintBugViewController: UIViewController {
     // MARK: Bug Functions
     
     func addBugToView() {
+        debugPrint(self)
         if bugs.count < maxBugs {
             let newBug = bugFactory.createBug()
             bugs.append(newBug)
+            view.addSubview(newBug)
             moveBugsAnimation()
         }
+        debugPrint(self)
     }
 
     func emptyBugsFromView() {
@@ -51,6 +54,9 @@ class PrintBugViewController: UIViewController {
         UIView.animateWithDuration(moveDuration) {
             for bug in self.bugs {
                 let randomPosition = CGPoint(x: CGFloat(arc4random_uniform(UInt32(UInt(self.view.bounds.maxX - bug.frame.size.width))) + UInt32(bug.frame.size.width/2)), y: CGFloat(arc4random_uniform(UInt32(UInt(self.view.bounds.maxY - bug.frame.size.height))) + UInt32(bug.frame.size.height/2)))
+                
+                print("randomPosition: \(randomPosition)")
+                
                 bug.frame = CGRect(x: randomPosition.x - bug.frame.size.width/1.5, y: randomPosition.y - bug.frame.size.height/1.5, width: BugFactory.bugSize.width, height: BugFactory.bugSize.height)
             }
         }
@@ -82,5 +88,22 @@ extension PrintBugViewController {
         if motion == .MotionShake { disperseBugsAnimation() }
     }
     func handleSingleTap(recognizer: UITapGestureRecognizer) { addBugToView() }
+}
+
+extension PrintBugViewController {
+    override var description: String {
+        return "PrintBugViewController contains \(bugs.count) bugs\n"
+    }
+    
+    override var debugDescription: String {
+        var index = 0
+        var debugString = "PrintBugViewController contains \(bugs.count) bugs\n..."
+        for bug in bugs {
+            debugString = debugString + "Bug\(index): \(bug.frame)\n"
+            index += 1
+        }
+        return debugString
+        
+    }
 }
 

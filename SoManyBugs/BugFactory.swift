@@ -44,6 +44,7 @@ class BugFactory {
         shakeAnimation.removedOnCompletion = false
         bug.layer.addAnimation(shakeAnimation, forKey: "shake")
         
+        print("Bug is created")
         return bug
     }
     
