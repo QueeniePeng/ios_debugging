@@ -1,0 +1,58 @@
+Debugging Lingo
+--------------------------------------------------------------------------------
+When solving (and sharing) bugs, it is important to know the right lingo!
+Being able to describe your bug precisely is key
+(especially when talking to developers)!
+
+logic error:
+a bug in a program that causes it to operate incorrectly, but not to terminate
+abnormally (or crash)runtime errors: issues that occur while your application is
+running—these can be logic errors or errors that cause your application to crash
+
+software bug:
+an error, flaw, failure, or fault in a computer program or system that causes
+it to produce an incorrect or unexpected result, or to behave in unintended ways
+
+static (or compilation) errors:
+issues identified by the compiler that must be fixed prior to running your
+application
+
+warning:
+issues that might cause problems or have unintended side-effects on your running
+application
+
+
+Debugging Process
+--------------------------------------------------------------------------------
+
+4.Try a fix ------------------
+^                            |
+3.Form a Hypothesis          |
+^                            |
+2.Gather debug information   |
+^                            |
+1.Reproduce the problem <- ----
+
+
+Debugging Tool
+--------------------------------------------------------------------------------
+Print Debugging: CustomStringConvertible, CustomStringDebugConvertible
+BreakPoint Debugging
+Visual Debugging
+
+
+Helpful Link:
+--------------------------------------------------------------------------------
+Apple: 2012 WWDC Sessions (see "Debugging in Xcode")
+
+GDB and LLDB Command Examples:
+https://developer.apple.com/library/content/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-command-examples.html#//apple_ref/doc/uid/TP40012917-CH3-SW1
+
+
+Pro Trip: "Property" Breakpoints
+--------------------------------------------------------------------------------
+If you set a breakpoint on a line of code containing a property definition,
+then your app will pause anytime that property’s value is changing and display
+a stack trace of the function calls that ultimately caused the change.
+
+Press Space on Debug area left panel variables for a quick look
