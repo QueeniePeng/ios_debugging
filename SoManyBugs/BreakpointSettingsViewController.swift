@@ -29,7 +29,7 @@ class BreakpointSettingsViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func dismissSettingsTouched(sender: AnyObject) {
+    @IBAction func dismissSettingsTouched(sender: AnyObject){
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
